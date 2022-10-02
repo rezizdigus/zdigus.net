@@ -70,7 +70,7 @@ const KBEasterEggs = {
 			switch (this.eedata.stage) {
 				case 0:
 					Title.innerHTML = `no.`
-					SubTitle.innerHTML = `"do it again, i dare you."`
+					ChangeSubtitle({ disableinterval: true, text: 'do it again, i dare you.' })
 					this.eedata.stage++
 					return
 				case 1:
