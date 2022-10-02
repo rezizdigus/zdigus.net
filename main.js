@@ -1,7 +1,5 @@
 import './style.css'
 
-import * as Turbo from "@hotwired/turbo"
-
 // Navbar thingie
 
 const Navbar = document.getElementById('navbar')
@@ -32,7 +30,8 @@ const AbsolutelyHilariousThings = [
 	"*rez's awesome webshit",
 	"do not look at my github",
 	"<a href=\"https://tewwyiscool160.xyz/\">amazing website</a>",
-	"<span class=\"link\" onclick=\"location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'\">video of a cute cat</spanhref=>"
+	"<span class=\"link\" onclick=\"location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'\">video of a cute cat</spanhref=>",
+	"i rickrolled terry"
 ]
 
 const Subtitle = document.getElementById('subtitle')
