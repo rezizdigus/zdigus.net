@@ -81,6 +81,16 @@ body {
   font-weight: bold;
 }
 
+@media screen and (max-width: 650px) {
+  .navbar .content .right {
+    display: none;
+  }
+
+  .navbar .content .left {
+    text-align: center !important;
+  }
+}
+
 .nav-link.twitter:hover {
   color: rgba(0, 172, 238, 1);
 }
@@ -99,7 +109,7 @@ body {
 
 .navbar::before {
   background: radial-gradient(
-    800px circle at var(--mouse-x) var(--mouse-y),
+    350px circle at var(--mouse-x) var(--mouse-y),
     rgba(255, 255, 255, 0.06),
     transparent 40%
   );
