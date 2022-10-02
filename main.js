@@ -72,7 +72,6 @@ const KBEasterEggs = {
 					Title.innerHTML = `no.`
 					SubTitle.innerHTML = `"do it again, i dare you."`
 					this.eedata.stage++
-					console.log(this.eedata)
 					return
 				case 1:
 					Title.innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
@@ -87,10 +86,10 @@ const KBEasterEggs = {
 }
 
 document.onkeyup = (e) => {
+	if (e.key == 'Backspace') {word = ''; return}
+
 	word += e.key
-	console.log(word)
 	if (KBEasterEggs[word] != null || KBEasterEggs[word] != undefined) {
-		console.log('found easter egg')
 		KBEasterEggs[word].run()
 		word = ''
 	}
