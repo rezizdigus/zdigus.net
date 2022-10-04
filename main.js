@@ -29,7 +29,7 @@ const AbsolutelyHilariousThings = [
 	"atomic go to hell",
 	"*rez's awesome webshit",
 	"do not look at my github",
-	"<a href=\"https://tewwyiscool160.xyz/\">amazing website</a>",
+	"<a href=\"https://tewwyiscool160.xyz\">amazing website</a>",
 	"<span class=\"link\" onclick=\"location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'\">video of a cute cat</spanhref=>",
 	"i rickrolled terry"
 ]
