@@ -1,8 +1,9 @@
 import './style.css'
 
-// Navbar thingie
+// Navbar and footer thingie
 
 const Navbar = document.getElementById('navbar')
+const Footer = document.getElementById('footer')
 
 Navbar.onmousemove = (e) => {
 	const Rect = Navbar.getBoundingClientRect(),
@@ -11,6 +12,15 @@ Navbar.onmousemove = (e) => {
 
 	Navbar.style.setProperty('--mouse-x', `${x}px`)
 	Navbar.style.setProperty('--mouse-y', `${y}px`)
+}
+
+Footer.onmousemove = (e) => {
+	const Rect = Footer.getBoundingClientRect(),
+		x = e.clientX - Rect.left,
+		y = e.clientY - Rect.top;
+
+	Footer.style.setProperty('--mouse-x', `${x}px`)
+	Footer.style.setProperty('--mouse-y', `${y}px`)
 }
 
 // subtitle text
