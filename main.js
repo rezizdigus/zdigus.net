@@ -167,13 +167,14 @@ const NotificationMessage = document.getElementById('notification-message')
 const NotificationClose = document.getElementById('notification-close')
 
 const OpenNotification = async () => {
-	
 	return NotificationWrapper.classList.remove('get-out')
 }
 
 const CloseNotification = async () => {
 	NotificationWrapper.classList.remove('critical')
 	NotificationWrapper.classList.add('get-out')
+
+	NotifyID = undefined
 
 	// to prevent the notification from opening too quickly
 	return new Promise(resolve => setTimeout(resolve, 1000));
