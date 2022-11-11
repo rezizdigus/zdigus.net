@@ -340,3 +340,131 @@ body {
   padding-bottom: 1rem;
   padding-top: 1rem;
 }
+
+#notification-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+
+  width: calc(100% - 2rem);
+  height: 3.5rem;
+
+  z-index: 10;
+
+  background: linear-gradient(-45deg, #4beeaa, #2399dd, #9d23d5);
+  background-size: 400% 400%;
+  animation: sep-gradient 15s ease infinite;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: .35s transform ease-out;
+}
+
+#notification-wrapper.critical {
+  background: linear-gradient(-45deg, #ee4b4b, #df0d0d, #df3e0d) !important;
+}
+
+#notification-wrapper .background {
+  position: relative;
+  
+  height: calc(100% - 2px);
+  width: calc(100% - 2px);
+
+  background: var(--dark-bg-accent);
+}
+
+#notification-wrapper.get-out {
+  transform: translateY(4.5rem);
+}
+
+.notification-container {
+  display: grid;
+
+  grid-template-columns: 4rem calc(100% - 8rem) 4rem;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes notification-icon {
+	0% {
+		color: #9d23d5;
+	}
+	25% {
+		color: #2399dd;
+	}
+  50% {
+    color: #4beeaa;
+  }
+  75% {
+    color: #2399dd;
+  }
+  to {
+    color: #9d23d5;
+  }
+}
+
+.notification-container .notification-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 4rem;
+  height: 100%;
+
+  color: #9d23d5;
+
+  animation: notification-icon 15s ease infinite;
+
+  transition: .15s color ease-in-out;
+
+  font-size: 1.65rem;
+}
+
+#notification-wrapper.critical  .notification-icon {
+  color: #ee4b4b !important;
+}
+
+.notification-container .notification-message {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  font-size: 1rem;
+}
+
+.notification-container .notification-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 4rem;
+  height: 100%;
+
+  font-size: 1.4rem;
+
+  float: right;
+
+  cursor: pointer;
+
+  transition: .15s all ease-out;
+}
+
+.notification-container .notification-close:hover {
+  color: red;
+  transform: rotate(180deg);
+}
+
+.notification-container a {
+  color: white;
+}
+
+.notification-container a:hover {
+  color: rgb(212, 212, 212);
+}

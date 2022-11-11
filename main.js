@@ -141,3 +141,138 @@ document.onkeyup = (e) => {
 	}
 	if (word.length > 10) word = ''
 }
+
+// http
+
+const PostData = async (url = '', data = {}) => {
+	const response = await fetch(url, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(data)
+	}).catch(response => {return response})
+	return response
+}
+
+const GetData = async (url = '') => {
+	const response = await fetch(url).catch(response => {return response})
+	return response
+}
+
+// notification stuff
+
+const NotificationWrapper = document.getElementById('notification-wrapper')
+const NotificationMessage = document.getElementById('notification-message')
+const NotificationClose = document.getElementById('notification-close')
+
+const OpenNotification = async () => {
+	
+	return NotificationWrapper.classList.remove('get-out')
+}
+
+const CloseNotification = async () => {
+	NotificationWrapper.classList.remove('critical')
+	NotificationWrapper.classList.add('get-out')
+
+	// to prevent the notification from opening too quickly
+	return new Promise(resolve => setTimeout(resolve, 1000));
+}
+
+const ShowNotification = async ({ Message, Critical = false }) => {
+	await CloseNotification()
+
+	if (Critical) NotificationWrapper.classList.add('critical')
+	NotificationMessage.innerHTML = Message
+	await OpenNotification()
+	return;
+}
+
+NotificationClose.onclick = async () => {
+	CloseNotification()
+}
+
+let NotifyID = undefined // 1 - cardinal connection error, 2 - status page error, anything else - custom notification
+let CardinalIdentifier = undefined
+
+const GetNotification = async () => {
+	let CardinalURL = 'https://cardinal.zdig.xyz/'
+
+	// attempt a cardinal handshake
+
+	let CardinalResponse = await GetData('https://cardinal.zdig.xyz/')
+
+	if (!CardinalResponse.ok) {
+		CardinalResponse = await GetData('https://cardinal.asuna.zdig.xyz/')
+		CardinalURL = 'https://cardinal.asuna.zdig.xyz/'
+
+		if (!CardinalResponse.ok) {
+			CardinalResponse = await GetData('https://cardinal.kirito.zdig.xyz/')
+			CardinalURL = 'https://cardinal.kirito.zdig.xyz/'
+
+			if (!CardinalResponse.ok) {
+				CardinalResponse = await GetData('https://cardinal.lisbeth.zdig.xyz/')
+				CardinalURL = 'https://cardinal.lisbeth.zdig.xyz/'
+
+				if (!CardinalResponse.ok) {
+					console.log(CardinalResponse)
+					if (NotifyID == 1) return
+					NotifyID = 1
+
+					ShowNotification({ Message: 'Cannot establish a connection with any of the known Cardinal instances. Check the&nbsp;<a href="https://status.zdigus.net">status page</a>.', Critical: true })
+					return
+				}
+			}
+		}
+	}
+
+	const Data = CardinalResponse.json()
+
+	let CardinalHandshakeResponse = await PostData(Data.sendTo + 'handshake', { token: Data.handshakeToken, origin: CardinalURL, identifier: 'service/landingpage' })
+	if (Data.sendTo !== CardinalURL) CardinalURL = Data.sendTo
+
+	if (!CardinalHandshakeResponse.ok) {
+		ShowNotification({ Message: 'Cardinal Handshake failed. Check the&nbsp;<a href="https://status.zdigus.net">status page</a>.', Critical: true })
+		return
+	}
+
+	let HandshakeResponse = CardinalHandshakeResponse.json()
+
+	CardinalIdentifier = HandshakeResponse.connectionIdentifier
+
+	// try to get status page incidents
+
+	let StatusPageResponse = await PostData(CardinalURL + 'system_command', { identifier: CardinalIdentifier, command: 'GET ACTIVE_STATUSPAGE_INCIDENTS' })
+
+	if (!StatusPageData.ok) {
+		console.log('Failed to get status page data')
+	}
+
+	const StatusPageData = StatusPageResponse.json
+
+	if (StatusPageData.success == true && StatusPageData.result.allFine == false) {
+		ShowNotification({ Message: 'There is an ongoing incident. Check the&nbsp;<a href="https://status.zdigus.net">status page</a>.', Critical: true })
+		return
+	}
+
+	// try to get the latest notification
+	let NotificationResponse = await PostData(CardinalURL + 'system_command', { identifier: CardinalIdentifier, command: 'GET LATEST_LANDINGPAGE_NOTIFICATION' })
+
+	if (!StatusPageData.ok) {
+		console.log('Failed to get notification data')
+	}
+
+	const NotificationData = NotificationResponse.json
+
+	if (NotificationData.success == true && NotificationData.result.ShowNotification == true) {
+		ShowNotification({ Message: NotificationData.result.notificationConent, Critical: NotificationData.result.notificationIsCritical })
+	} else {
+		CloseNotification()
+	}
+}
+
+GetNotification()
+
+setInterval(async () => {
+	GetNotification()
+}, 100000);
