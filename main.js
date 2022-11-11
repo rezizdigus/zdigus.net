@@ -205,25 +205,25 @@ const GetNotification = async () => {
 	if (!CardinalResponse.ok) {
 		CardinalResponse = await GetData('https://cardinal.asuna.zdig.xyz/')
 		CardinalURL = 'https://cardinal.asuna.zdig.xyz/'
+	}
 
-		if (!CardinalResponse.ok) {
-			CardinalResponse = await GetData('https://cardinal.kirito.zdig.xyz/')
-			CardinalURL = 'https://cardinal.kirito.zdig.xyz/'
+	if (!CardinalResponse.ok) {
+		CardinalResponse = await GetData('https://cardinal.kirito.zdig.xyz/')
+		CardinalURL = 'https://cardinal.kirito.zdig.xyz/'
+	}
+	
+	if (!CardinalResponse.ok) {
+		CardinalResponse = await GetData('https://cardinal.lisbeth.zdig.xyz/')
+		CardinalURL = 'https://cardinal.lisbeth.zdig.xyz/'
+	}
+	
+	if (!CardinalResponse.ok) {		
+		if (NotifyID == 1) return
+		
+		NotifyID = 1
 
-			if (!CardinalResponse.ok) {
-				CardinalResponse = await GetData('https://cardinal.lisbeth.zdig.xyz/')
-				CardinalURL = 'https://cardinal.lisbeth.zdig.xyz/'
-
-				if (!CardinalResponse.ok) {
-					console.log(CardinalResponse)
-					if (NotifyID == 1) return
-					NotifyID = 1
-
-					ShowNotification({ Message: 'Cannot establish a connection with any of the known Cardinal instances. Check the&nbsp;<a href="https://status.zdigus.net">status page</a>.', Critical: true })
-					return
-				}
-			}
-		}
+		ShowNotification({ Message: 'Cannot establish a connection with any of the known Cardinal instances. Check the&nbsp;<a href="https://status.zdigus.net">status page</a>.', Critical: true })
+		return
 	}
 
 	const Data = CardinalResponse.json()
