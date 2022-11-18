@@ -1,5 +1,7 @@
 import './style.css'
 
+import { GetData, PostData } from './http'
+
 // Navbar and footer thingie
 
 const Navbar = document.getElementById('navbar')
@@ -140,24 +142,6 @@ document.onkeyup = (e) => {
 		word = ''
 	}
 	if (word.length > 10) word = ''
-}
-
-// http
-
-const PostData = async (url = '', data = {}) => {
-	const response = await fetch(url, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(data)
-	}).catch(response => {return response})
-	return response
-}
-
-const GetData = async (url = '') => {
-	const response = await fetch(url).catch(response => {return response})
-	return response
 }
 
 // notification stuff
