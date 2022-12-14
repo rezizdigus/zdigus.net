@@ -270,8 +270,13 @@ const GetNotification = async () => {
 	}
 }
 
-GetNotification()
+// cardinal is not finished yet, nor is ordnial, or any replacement temporary api, therefore these are temporairly commented out.
+// TODO: actually finish cardinal lmao.
 
-setInterval(async () => {
-	GetNotification()
-}, 100000);
+// ! meow.
+
+// GetNotification()
+
+// setInterval(async () => {
+// 	GetNotification()
+// }, 100000);
