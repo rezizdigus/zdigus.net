@@ -80,7 +80,21 @@ const AbsolutelyHilariousThings = [
 	"playin' fnaf",
 	"spotify.",
 	"codin' stuff",
-	"i'm good at copying things, not necessarily doing things."
+	"i'm good at copying things, not necessarily doing things.",
+	"i actually like Sword Art Online, unbelieveable right?",
+	"why did you kill Yuuki",
+	"Kirito best swordsman",
+	"A- su- na",
+	"your waifu is hooome",
+	"hoyoverse.",
+	"a self-proclaimed good developer, who likes to never code, be lazy and doesn't do his homework.",
+	"meow",
+	"meowing at code",
+	"slamming my keyboard",
+	"lovely.",
+	"I am Yuzaki Nasa and I'll reach the speed to light faster than NASA",
+	"look me up on my anime list.",
+	"i both watch and don't watch a lot of anime."
 ]
 
 const Subtitle = document.getElementById('subtitle')
