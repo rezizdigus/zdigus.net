@@ -341,6 +341,14 @@ body {
   padding-top: 1rem;
 }
 
+.footer .discord-verify {
+  text-align: center;
+
+  color: rgba(255, 255, 255, 0.116);
+
+  padding-top: 1rem;
+}
+
 #notification-wrapper {
   position: fixed;
   bottom: 0;
