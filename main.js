@@ -264,7 +264,7 @@ const GetNotification = async () => {
 	const NotificationData = NotificationResponse.json
 
 	if (NotificationData.success == true && NotificationData.result.ShowNotification == true) {
-		ShowNotification({ Message: NotificationData.result.notificationConent, Critical: NotificationData.result.notificationIsCritical })
+		ShowNotification({ Message: NotificationData.result.notificationContent, Critical: NotificationData.result.notificationIsCritical })
 	} else {
 		CloseNotification()
 	}
@@ -273,7 +273,7 @@ const GetNotification = async () => {
 // cardinal is not finished yet, nor is ordnial, or any replacement temporary api, therefore these are temporairly commented out.
 // TODO: actually finish cardinal lmao.
 
-// ! meow.
+// ! にゃ。
 
 // GetNotification()
 

@@ -105,7 +105,7 @@
           </div>
         </div>
         <div class="discord-verify">Discord Verify Code: LambentLight123</div>
-        <div class="copyright">&copy; 2022 rezizdigus</div>
+        <div class="copyright">&copy; <span id="year">2023</span> rezizdigus</div>
       </footer>
 
       <div id="notification-wrapper" class="get-out">
@@ -120,5 +120,12 @@
     </div>
 
     <script type="module" src="/main.js"></script>
+    <script>
+      const YearSpan = document.getElementById('year')
+
+      const d = new Date()
+
+      YearSpan.textContent = d.getFullYear()
+    </script>
   </body>
 </html>
