@@ -11,7 +11,7 @@ const ScrambleString = (String) => {
         Letters[i] = Letters[Letter]
         Letters[Letter] = Temp
     }
-
+ 
     return Letters.join('')
 }
 
