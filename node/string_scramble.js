@@ -2,7 +2,7 @@
 
 
 const ScrambleString = (String) => {
-    let Letters = String.split(""),
+    let Letters = String.split(''),
         LettersLength = Letters.length
 
     for(let i = LettersLength - 1; i > 0; i--) {
@@ -12,7 +12,7 @@ const ScrambleString = (String) => {
         Letters[Letter] = Temp
     }
 
-    return Letters.join("")
+    return Letters.join('')
 }
 
 // once again thank you, https://www.w3resource.com/javascript-exercises/javascript-string-exercise-27.php
