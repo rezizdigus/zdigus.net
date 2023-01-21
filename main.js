@@ -27,7 +27,7 @@ Footer.onmousemove = (e) => {
 
 // subtitle text
 
-const AbsolutelyHilariousThings = [
+let AbsolutelyHilariousThings = [
 	"my code broke again",
 	"rezisstupid™",
 	"rezissmart™",
@@ -94,7 +94,8 @@ const AbsolutelyHilariousThings = [
 	"lovely.",
 	"I am Yuzaki Nasa and I'll reach the speed to light faster than NASA",
 	"look me up on my anime list.",
-	"i both watch and don't watch a lot of anime."
+	"i both watch and don't watch a lot of anime.",
+	"656f616173696e6d6e47"
 ]
 
 const Subtitle = document.getElementById('subtitle')
