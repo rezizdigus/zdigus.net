@@ -281,3 +281,53 @@ const GetNotification = async () => {
 // setInterval(async () => {
 // 	GetNotification()
 // }, 100000);
+
+const Today = new Date()
+if (Today.getMonth() == 3 && Today.getDate() == 1) {
+	const root = document.querySelector(':root')
+
+	root.style.setProperty('--dark-bg', `rgb(${Math.round(Math.random() * 256) - 1}, ${Math.round(Math.random() * 256) - 1}, ${Math.round(Math.random() * 256) - 1})`)
+	root.style.setProperty('--dark-bg-accent', `rgb(${Math.round(Math.random() * 256) - 1}, ${Math.round(Math.random() * 256) - 1}, ${Math.round(Math.random() * 256) - 1})`)
+	root.style.setProperty('--dark-color', `rgb(${Math.round(Math.random() * 256) - 1}, ${Math.round(Math.random() * 256) - 1}, ${Math.round(Math.random() * 256) - 1})`)
+	root.style.setProperty('--dark-color-blue', `rgb(${Math.round(Math.random() * 256) - 1}, ${Math.round(Math.random() * 256) - 1}, ${Math.round(Math.random() * 256) - 1})`)
+
+	if (Math.round(Math.random() * 100) < 95) {
+		const el = document.createElement('a')
+		el.innerHTML = 'click me!!111!!1!!'
+		el.style.zIndex = '99'
+		el.style.position = 'absolute'
+		el.style.top = '20%'
+		el.style.left = '40%'
+		el.style.color = 'blue'
+		el.style.fontSize = '10rem'
+		el.id = 'clickkkkk'
+
+		document.body.appendChild(el)
+
+		el.onclick = async () => {
+			const el = document.createElement('div')
+			el.innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+			el.style.position = 'absolute'
+			el.zIndex = '9999'
+			el.style.width = (Math.random() * 6.5) + 'rem'
+			el.style.height = (Math.random() * 6.5) + 'rem'
+			el.style.top = (Math.random() * 85 + 5) + 'vh'
+			el.style.left = (Math.random() * 85 + 5) + 'vw'
+			el.id = 'hehehehehe'
+			
+			document.body.appendChild(el)
+
+			setInterval(async () => {
+				const hehehe = document.getElementById('hehehehehe')
+
+				el.style.top = (Math.random() * 85 + 5) + 'vh'
+				el.style.left = (Math.random() * 85 + 5) + 'vw'
+			}, 420)
+		}
+	}
+
+	AbsolutelyHilariousThings = ['I wonder what day it is', 'who the hell designed this color scheme', 'the author of this website is the smartest person on earth', 'league of legends best game', 'genshin impact is the worst game ever', 'cat suck', 'sword art online is the worst anime']
+	ChangeSubtitle({ random: true })
+}
+
+
