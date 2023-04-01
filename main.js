@@ -291,7 +291,7 @@ if (Today.getMonth() == 3 && Today.getDate() == 1) {
 	root.style.setProperty('--dark-color', `rgb(${Math.round(Math.random() * 256) - 1}, ${Math.round(Math.random() * 256) - 1}, ${Math.round(Math.random() * 256) - 1})`)
 	root.style.setProperty('--dark-color-blue', `rgb(${Math.round(Math.random() * 256) - 1}, ${Math.round(Math.random() * 256) - 1}, ${Math.round(Math.random() * 256) - 1})`)
 
-	if (Math.round(Math.random() * 100) < 95) {
+	if (Math.round(Math.random() * 100) < 98) {
 		const el = document.createElement('a')
 		el.innerHTML = 'click me!!111!!1!!'
 		el.style.zIndex = '99'
@@ -322,6 +322,7 @@ if (Today.getMonth() == 3 && Today.getDate() == 1) {
 
 				el.style.top = (Math.random() * 85 + 5) + 'vh'
 				el.style.left = (Math.random() * 85 + 5) + 'vw'
+				el.style.transform = 'rotate(' + (Math.random() * 359) + 'deg)'
 			}, 420)
 		}
 	}
